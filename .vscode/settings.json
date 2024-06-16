@@ -1,0 +1,12 @@
+{
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "selection",
+	"editor.wordWrap": "on",
+	"editor.cursorStyle": "line",
+	"editor.cursorBlinking": "blink",
+	"terminal.integrated.cursorStyle": "block",
+	"terminal.integrated.cursorStyleInactive": "outline",
+	"terminal.integrated.accessibleViewPreserveCursorPosition": false,
+	"editor.cursorSmoothCaretAnimation": "off",
+	"editor.fontLigatures": true,
+}

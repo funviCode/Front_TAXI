@@ -1,0 +1,672 @@
+pixelScreen.js  для подставления макета psd в google и верстки пиксель в пиксель. Js нужно подключить в Html далее скачать jquery на оф сайте (на кнопку скачать откроется файл, копируем его ,создаем файл  jquery-3.3.1.JS  в него вставляем то что скопировали на сайте) подключаем его тоже в html перед всем script JS.
+после этого заходим в psd макет сохраняем его как jpeg. Потом заходим в  pixelScreen.js
+;$(function(){
+
+    var pxs_url = 'img/1Home.jpg';      вводим наше название картинки
+    var pxs_height = '2413px';            вводим нашу высоту картинки
+    var pxs_opacity_control = true;
+проверяем в гугл, теперь можем в google редактировать код, а потом вставлять в sublime text.
+
+
+В psd макете в фотошоп есть полосы центра ctrl+H  убрать или включить их
+
+
+@import url('marvel-bold.css');      поключение шрифта который сгенерировали на сайте и вставили в css
+
+
+
+.main_menu{
+	background: -webkit-linear-gradient(#e4e4e6, #d6d6d8);  префикс сделанный с помощью сайта для отображения сss3 во всех браузерах
+	background: linear-gradient(#e4e4e6, #d6d6d8);
+}
+
+
+.main_menu nav a{
+	font-size: 24px;	
+	color: #313030;	
+	text-decoration:none; 
+	font-family: 'Marvel-Bold';	
+	display: inline-block;                 для того что бы приминились паддинги 
+	vertical-align: top;	
+	padding: 5px 25px;                  задавали в самом google под высоту и ширину hover	
+}
+
+                                                                                              СЛАЙДЕР
+.slider button{  кнопка для слайдера задаетсяв сss
+	position: absolute;
+	top: 50%;
+	width: 72px;
+	height: 61px;
+	border: 0;
+               z-index: 1;  работает с position: absolute;   наложил кнопку назад(prev) поверх картинок(без нее он находится под картинками)                 
+	font-size: 0;                 убираем слово Next
+	background: rgb(0,0,0, .35);        цвет кнопки прозрачен на 35% но он черный 
+}	                                                   #000 при 100% проверяем все это в фотошопе     
+
+
+.slider button.slick-prev{     делает элемент назад слева
+	left: 0px;
+	background-image: url('../img/left.png');  картинка	
+	background-repeat: no-repeat;
+	background-position: center;
+        
+}
+
+.slider button.slick-next{   делает элемент next  справа
+	right: 0px;
+}
+создали свой джаваскрипт в котором пишем
+$(function() {             
+    $('.slider').slick();             slider название нашего тега в Html               slickназвани скаченного js  для скрипта
+});
+
+
+
+.triggers ul li:nth-child(2) .triggers_ico{     выбор именно 2 картинки
+    margin-top: -3px;
+} 
+
+.triggers ul li:nth-child(3) .triggers_ico{     выбор именно 3 картинки
+    margin-top: 13px;
+    margin-right: 18px;
+} 
+
+
+
+.triggers ul li a{
+ 	position: absolute;      что бы появилась картинка ее нужно позиционировать
+ 	bottom: 25px;
+    right: 8px;
+ }
+.triggers ul li{
+position: relative;    что бы картинка позиционировалась относительно документа li
+
+
+
+outline: none!important;    убрать синюю обводку всех форм и кнопок 
+
+
+INPUT
+для текста в инпут и самого инпут всех браузеров
+::-webkit-input-placeholder {
+	color: #737272;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	line-height: 27px;
+}
+
+::-moz-placeholder {
+	color: #737272;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	line-height: 27px;
+}                                                                          
+
+:-ms-input-placeholder {
+	color: #737272;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	line-height: 27px;
+}
+
+:-moz-placeholder {
+	color: #737272;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	line-height: 27px;
+}
+
+
+
+фокусируется на объекте инпут и при нажатии убирает название инпут для всех браузеров
+*:focus::-webkit-input-placeholder{
+	color: transparent;
+}
+
+*:focus::-moz-placeholder{
+	color: transparent;
+}
+
+*:focus:-ms-input-placeholder{
+	color: transparent;
+}
+
+*:focus:-moz-placeholder{
+	color: transparent;
+}
+
+
+							КАЛЕНДАРЬ
+https://jqueryui.com/datepicker/              js для календаря вставки даты
+либо подключаем Link            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> либо переходим на code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css копируем код и создаем свой	 js или сохранить как потом проделываем  тоже самое с   
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   потом заходим в свой скрипт scripts.js который мы создавали во время сладеров и пишем в него
+$( function() {
+    $( "#datepicker" ).datepicker();  ----- только это так как function там уже есть потом убрать пробелы("#datepicker") и если тег в Html назван по другому то нужно его вставить } );                                                         вместо datepicker   
+все это указано на сайте, появится ошибка Js связанная с изображениями потому что на самом календаре есть стрелочки картинки, у нас просто не правильно указан путь был.
+надо скачать с сайта картинку (с помощью посмотреть код-открыть в новом окне) там будет много картинок маленьких, потом заходим в jquery-ui.css который установили делаем поиск ctrl+f по названию картинки которая указана на сайте посмотреть код в сss и изменяем путь на свой скорее всего просто добавить папку в которую мы положили картинку
+
+
+
+
+.booking_form .input_label label:last-child{
+	margin-bottom: 0;
+}
+  для последнего элемента в label  делаем отступы потому что элемент после него вставал с отступами, так же можно делать first-child 
+
+
+                                                                       INPUT  RADIO
+<label><input name="radio" type="radio" checked><i></i><span>Cheap</span></label>     name="radio"что бы можно было выбрать только один элемент на сайте
+
+удаляем стандартные кружки радио
+.booking_form .radio_buttons label input[type=radio]{
+	display: none;	
+}
+<label><input name="radio" type="radio" checked><i></i><span>Cheap</span></label>  это HTML - i нужно как раз для нашего стилизованного круга который мы делаем сами, все размеры в фотошопе
+
+.booking_form .radio_buttons i{     сделали кружок сами
+ 	display: inline-block;
+	vertical-align: top;
+	width: 18px;
+	height: 18px;
+	border: 3px solid #adaeaf;               
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-right: 10px;
+	position: relative;
+}
+сделали галочку для кружка радио, вырезали в фотошопе
+.booking_form .radio_buttons label i:after{
+	content: '';
+	width: 10px;
+	height: 10px;
+	background: url('../img/ico22.png');
+	position: absolute;                                позиция к кругу нашему
+	top: 1px; bottom: 0; right: 0; left: 0;     так надо ставить 0 пикселей, но у меня они были высоко и я подправил
+	margin: auto;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+делаем для того что бы ставилась наша галочка при нажатии
+.booking_form .radio_buttons label input[type="radio"]:checked + i:after{       i  это следующий тег после type="radio" 
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+это делаем как hover что бы при нажатии кружок изменял цвет
+.booking_form .radio_buttons label input[type="radio"]:checked + i{
+	border: 3px solid #98a6b3;
+}
+
+                                         SELECTOR
+
+<script src="js/jselector.js"></script>  подключаем js это был его js а не с jquery
+нечего не получилось потому что была новая версия jquery-3.3.1.min.js , а новая не всегда хорошо, мы скачали у него версию jquery-1.7.2.min.js и установили её он сказал она самая стабильная
+
+<div class="jselector" data-name="">  обернул наш селектор в js  в гугл посмотреть код
+<select name=""> наш селект					
+<div class="wrap">            сама кнопка
+<div class="dropdown">    список подач который вылазит при нажатии
+
+css свойства  их прописывать в Html не надо они уже там  google  посмотреть код
+.jselector{           что бы все встало на место        
+	display: inline-block;
+	vertical-align: top;
+} 
+                      
+.jselector select{             скрываем нашу кнопку селектор
+	display: none;
+}
+оформляем кнопку размеры шрифт и тд  так же бы убрали вместо span  поставли в html ins для названий кнопок(взрослые, дети)
+.jselector .wrap{
+	width: 96px;
+	height: 30px;
+	background: #f0f3f5;
+	color: #737272;
+	font-family: "Open Sans";
+	font-size: 14px;
+	line-height: 27px;
+	position: relative;
+}
+
+.jselector .wrap button{        button находится в нашем wrap  это сам треугольничек и кнопка на который нажимать
+	position: absolute;        что бы появилась относительно wrap
+	top: 3px;   right: 5px;       
+	width: 23px;
+	height: 23px;
+	border: 1px solid #d5d7d9;
+	background:url('../img/selec.png') #d2dae0 no-repeat center;       вставляем нашу галочку которую вырезали в фотошопе
+	font-size: 0;         			убираем старый треугольник                         
+}
+
+
+
+.booking_form .selects{
+	margin-top: 19px;
+	padding-left: 13px;
+	display: -webkit-flex;
+	display: -moz-flex;                  что бы поместились  для двух инпут радио
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding-bottom: 65px;                      длина выпадения селектора в котором указывается количество
+}
+
+
+.jselector .dropdown{
+	display: none;        скрыли выпадющее меню с выбором который вылазит при нажатии
+	position: absolute;	
+	left: 0;  right:0;
+	top: 30px;           высота нашего wrap
+}
+
+
+.jselector.is-shown .dropdown{      .is-shown  появляется при нажатии на треугольник смотреть гугл посмотреть код  без пробела между .jselector.is-shown
+	display:block;              нужно что бы он спозиционировался относительно нашего .jselector         
+}
+
+.jselector{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+
+.jselector.is-shown .dropdown ul{   стилизуем нашу рамку в которая выдвигается при нажатии
+	list-style: none;
+	border: 1px solid #cccccc;
+	width: 55px;
+}
+
+.jselector.is-shown .dropdown ul li{      стилизуем сами цифры или буквы в рамке которая выдвигается
+	padding: 4px 10px;
+	color: #737272;
+	font-family: "Open Sans";        
+	font-size: 14px;
+	line-height: 27px;
+}
+
+.jselector.is-shown .dropdown ul li.selected{  без пробела между li,  селектед тоже увидили в гугл код
+	background-color: #d2dae0;         выбранная строка меняет цвет
+}
+
+.jselector.is-shown .dropdown ul li:hover{       так же задали цвет при навидении
+	background: #eee;
+}
+
+label{   задали в самом верху где*, по желанию
+	cursor: pointer;
+}
+ стили для сообщений текст ареа
+.booking_form textarea{
+	background-color: #f0f3f5;
+	width: 434px;
+	height: 143px;                                     
+	border: 1px solid #f1f1f1;	
+	color: #737272;
+	font-family: "Open Sans";
+	font-size: 14px;
+	line-height: 27px;
+	padding: 5px 12px;
+	resize:none;         убрать угол справа внизу и запрещает растягивать его
+}
+
+.booking_form input[type="submit"]
+	transition: 1s;        время плавного затухания
+
+.booking_form input[type="submit"]:hover{
+	background: #000;
+}
+
+
+                                                                     КАРТИНКИ СПРАВА
+
+
+.booking_form .center{                         задали центру флекс что бы картинки встали справа      потому что у центра есть ширина1000 и мы задавали шир инпутам 400 
+	display: -webkit-flex;
+	display: -moz-flex;                              
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+}
+
+.booking_form .car_links ul{
+	list-style: none;
+	margin-left: 168px;
+}               			
+  
+ .booking_form .car_links ul li{
+ 	margin-bottom: 7px;
+ 	position: relative;               слова на картинке
+	overflow: hidden;    что бы картинка увеличивалась при навидении в своих размерах, а все остальное обрезалось, без него не очень если есть названия и бекгроунд у 																названия
+ }   
+.booking_form .car_links ul li img{
+	transform: scale(1);           мб можно и без этого
+	transition: .4s;            плавное увеличение, это время 0,4sec
+}
+
+.booking_form .car_links ul li:hover img{
+	transform: scale(1.1);          увеличивает картинку при навидении
+}
+
+.booking_form .car_links ul li span{
+	width: 312px;
+	height: 44px;
+	position: absolute;             что бы слова появились на картинке, абсолютно li
+	left: 29px; bottom: 11px;           cначало нужно ставить 0 а потом уже редактировать
+	color: #ffffff;
+	font-family: 'Roboto-Condensed';           стили 
+	font-size: 30px;
+	line-height: 43px;               что бы текст выровнялся= поднялся или опустился, то нужно уменьшить или увеличить отступы, межстрочный интервал
+	background: rgb(0,0,0, .54);       это черный цвет который прозрачен на 54% смотреть в фотошопе
+	padding-left: 28px;
+   	margin-bottom: 3px;                      что бы выровнялся background или задать  li ширину и высоту картинки   
+}
+
+
+ 						ФУТЕР
+
+
+footer .copy > span{                означает что берем спан на первом уровне, а тот спан что в спане не будет включен
+	font-size: 30px;
+	line-height: 18px;
+	font-family: 'Roboto-Condensed';
+	color: #e2e2e2;
+}
+
+footer .copy > span > span{                 означает что берем спан внутри спана!
+	font-size: 30px;
+	font-family: 'Roboto-Condensed';
+  	color: #fdc903;
+}
+
+
+
+footer{
+	background: #4a4a4a;              
+	padding: 65px 0 93px;          делаем отцентровку самому футеру
+}
+
+footer .soc a{
+	margin: 0 4px;              расстояния между картинками соц сетей
+}
+
+ 
+
+													
+          
+
+
+                                                                                                                  ABOUT
+
+
+
+.about .left img{
+	float: left;             что бы картинка была справа а текст автоматом слева
+}
+
+.about .left p a:hover{
+	text-decoration: underline;        при навидении появлялось нижнее подчеркивание
+}
+
+СТИЛИЗАЦИЯ ЦИФР
+
+.about .right ol{                                      
+	counter-reset: myCounter;      для каждого ol сбрасываем счетчик
+}
+.about .right ol li:before{ 
+	content: counter(myCounter);   просто класс
+	counter-increment: myCounter;     счетчик прибавления
+в гугле код будет отображение before поэтому мы можем его стилизовать
+	width: 45px;       продолжение верхнего
+	height: 45px;
+	background: #fdc903;
+	font-size: 36px;
+	color: #fff;
+	font-family: 'Roboto-Condensed';
+	position: absolute;                 relative ставим для li
+	left: 0;  right: 0;
+	text-align: center;
+	line-height: 45px;
+}
+
+
+								Testimonials 
+
+.Testimonials ul li span{                 
+	color: #727171;
+	font-family: 'Roboto-Condensed';
+	font-size: 18px;
+	display: block;          мы заперли спан в ли и дали ли паддинги и если давать паддинги и маргины спану то они не работали пока не сделать его блоком
+	text-align: right;
+	margin-top: 23px;
+
+.Testimonials ul li p:before{                    для ковычек
+	content: url('../img/cov.png');
+	position: absolute;                  relative для .Testimonials ul li p
+    	left: -16px;
+    	top: -29px;
+}
+
+
+       									CARS  мое
+div class="our_cars">
+	<div class="grid_cars"><img src="img/Layer_11.png" alt=""></div>
+	<div class="grid_cars"><img src="img/Layer_12.png" alt=""></div>
+	<div class="grid_cars"><img src="img/Layer_133.png" alt=""></div>
+	<div class="grid_cars"><img src="img/Layer_14.png" alt=""></div>
+
+
+.cars .our_cars{ ДЛЯ КАРТИНОК
+	list-style: none;
+	display: grid;
+	justify-items: center;
+	grid-template-columns:repeat(3, 1fr); 
+	grid-column-gap: 31px;
+	grid-row-gap: 23px;
+}
+
+
+       									CARS  его
+
+
+
+.cars ul{
+	list-style: none;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin-bottom: 30px;
+} 
+html
+<ul>
+	<li><a href="img/car1_big.jpg"><img src="img/Layer_11.png" alt=""></a></li>
+	<li><a href="img/car2_big.jpg"><img src="img/Layer_12.png" alt=""></a></li>
+	<li><a href="img/car3_big.jpg"><img src="img/Layer_133.png" alt=""></a></li>
+</ul>
+
+
+ПРИ НАЖАТИИ КАРТИНКА УВЕЛИЧИВАЕТСЯ
+для того что бы картинки увеличивались помещаем ее в тег A  задаем ему класс (fancy)потом подключаем js и css jquery.fancybox    в теге А будут увеличенные картинки, наших обрезанных. В нашем scripts.js подключаем скрипт   $('.fancy').fancybox();  
+Для того что бы пользователь знал что картинки можно увелич при нажатии мы скачиваем иконку лупы изменяем размер в фотошопе изображения-размер или зайти в гугл дизайн векторные иконки и англ ввести лупа потом скачать меняем цвет на белый на самом сайте либо фотошопе
+ДЛЯ ЛУПЫ
+.cars ul li a{
+	display: inline-block;
+	position: relative;
+.cars ul li a:before{
+	content: url('');
+	position: absolute;
+	top: 0; bottom: 0;
+	right: 0; left: 0;
+	background: rgba(0,0,0, .7);  затемнение картинок
+	opacity: 0;              прозрачность картинки 0  прозрач 1 не прозрач
+	transition: .4s;     скорость затемнения и появления лупы
+}
+.cars ul li a:after{
+	content: url('');
+	position: absolute;
+	top: 0; bottom: 0;
+	right: 0; left: 0;
+	margin: auto;     по середине
+	width: 64px;  размер лупы
+	height: 64px;
+	background: url('../img/loupe.png');
+	transform: scale(0);
+	transition: .4s;
+}
+.cars ul li a:hover:before{
+	opacity: 1;
+}
+.cars ul li a:hover:after{
+	opacity: 1;
+	transform: scale(1);            scale(x,y) изменяет размер изображения при навидении для лупы 
+}
+
+ЧТОБЫ САМА КАРТИНКА ТОЖЕ ПЛАВНО УВЕЛИЧИВАЛАСЬ КАК НА ГЛАВНОЙ СТРАНИЦЕ СПРАВА
+.cars ul li{
+	overflow: hidden; обрезка что бы не выходила за приделы
+}
+.cars ul li a{
+	display: inline-block;
+	position: relative;
+	transition: .4s;       плавность появления и затухания
+}
+.cars ul li:hover a {
+	transform: scale(1.1);    увелич по осям x,y 
+}
+
+
+
+
+								SERVICES
+
+
+делаем их в Ul li*9
+.services ul{
+	list-style: none;
+	list-style: none;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-bottom: 57px;
+}
+.services ul li{
+	width: 370px;             задаем ширину блока li
+	background: #e5e5e7;
+	padding: 23px 23px 27px;      отступы внутри ли
+	margin-bottom: 29px;              отступы между блоками li
+}
+
+.services ul li span{
+	display: block;          что бы выровнялся по левой стороне
+	font-size: 20px;
+    font-family: "Open Sans";
+    font-weight: 100;
+    line-height: 18px;
+    padding-bottom: 24px;
+    padding-top: 25px;
+}
+
+.services ul li p{
+	text-align: left;
+    color: #717171;
+    font-size: 14px;
+    font-family: "Open Sans";
+    line-height: 20px;
+}
+
+.services ul li a{
+	display: inline-block;
+block	Элемент показывается как блочный. Применение этого значения для встроенных элементов, например тега <span>, заставляет его вести подобно блокам — происходит перенос строк в начале и в конце содержимого.											
+inline	Элемент отображается как встроенный. Использование блочных тегов, таких как <div> и <p>, автоматически создает перенос и показывает содержимое этих тегов с новой строки. Значение inline отменяет эту особенность, поэтому содержимое блочных элементов начинается с того места, где окончился предыдущий элемент.
+	width: 97px;
+    height: 38px;
+    background: #fdc903;
+    border: none;
+    color: #ffffff;
+    font-family: "Open Sans";
+    font-size: 14px;
+    margin-top: 23px;
+    cursor: pointer;
+    transition: 1s;
+    text-decoration: none;
+    line-height: 38px;          выровнять текст в желтом блоке
+	text-align: center;
+}
+
+.services ul li a:hover{
+	background: #000
+}
+
+
+
+
+								CONTACTS
+
+LEFT
+ВСТАВЛЯЕМ КАРТУ ГУГЛ  заходим гугл мапс вводим адрес потом меню слева-ссылка код-встраивание карт-копировать и вставить в HTML  меняем размер в самом HTML
+
+<div class="google_map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1829.2510748233285!2d-4.254767065686893!3d55.86090980008636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4888469fbede2011%3A0xef2a5da16d116a18!2zOTg3MCBTdCBWaW5jZW50IFBsLCBHbGFzZ293IEcxIDJESCwg0JLQtdC70LjQutC-0LHRgNC40YLQsNC90LjRjw!5e0!3m2!1sru!2sru!4v1545223289343" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
+Можно указать для всех шрифтов на верху css
+h1, h2, h3, h4{
+font-weight: normal;
+}
+
+Для переноса строк в <p>
+<p>The Company Name Inc. <br>
+	9870 St Vincent Place, <br>
+	Glasgow, DC 45 Fr 45. <br>
+	Telephone: +1 800 603 6035 <br>
+	FAX: +1 800 889 9898 <br>
+	E-mail:<a href="#">mail@demolink.org</a> </p>
+
+<form action="">
+	<input type="text" placeholder="Name:">
+	<input type="text" placeholder="E-mail:">
+	<input type="text" placeholder="Phone:">
+	<textarea name="" placeholder="Message:"></textarea>
+<div class="btns">
+		<input type="submit" value="Send">
+		<input type="reset" value="Clear"> Для кнопки которая все стирает написанное
+</div>
+</form>
+он задал input type="text"  отдельный див и переместил их туда что бы сделать флексами и они сами по ширине расставились
+
+ЧТО БЫ КНОПКИ ВСТАЛИ СПРАВА
+.contacts .contact_info .right .btns{
+	text-align: right;
+}
+ 
+.contacts .contact_info .right input[type="submit"]:hover, .contacts .contact_info .right input[type="reset"]:hover {  сразу для двух инпут, просто через запятую
+    background: #000;
+}
+ .contacts .contact_info .right input[type="submit"]:hover, 
+.contacts .contact_info .right input[type="reset"]:hover { и еще можно перенести на следующую строку
+
+
+
+
+
+
+
+
+
+
+
+
